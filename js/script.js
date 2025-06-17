@@ -65,53 +65,28 @@ let softwareData = {
         platforms: {
             "Windows": [
                 {
-                    name: "Google Chrome",
-                    description: "谷歌浏览器安装包 (exe, 1.2MB)",
-                    url: "#",
-                    usage: "Google Chrome是快速、安全的网页浏览器，支持同步书签、密码和浏览历史。",
+                    name: "Office",
+                    description: "Office_Tool_with_runtime_v10.21.35.0_x64.zip (zip, 73.531MB)",
+                    url: "https://oxy-website.oss-cn-chengdu.aliyuncs.com/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E5%8C%85/Windows/Office_Tool_with_runtime_v10.21.35.0_x64.zip",
+                    usage: "Office Tool Plus 是微软官方的 Office 安装工具，支持批量部署、版本切换、激活等操作。",
                     installation: [
-                        "双击下载的安装包",
-                        "安装程序会自动下载最新版本",
-                        "等待安装完成",
-                        "首次运行时可以导入其他浏览器的数据",
-                        "登录Google账户以同步数据"
-                    ]
-                },
-                {
-                    name: "WinRAR",
-                    description: "压缩解压软件 (exe, 3.1MB)",
-                    url: "#",
-                    usage: "WinRAR是强大的压缩解压工具，支持RAR、ZIP等多种格式的压缩文件。",
-                    installation: [
-                        "运行安装程序",
-                        "选择安装路径和语言",
-                        "选择要关联的文件格式",
-                        "完成安装",
-                        "可以选择购买许可证或继续试用"
-                    ]
-                },
-                {
-                    name: "看图软件 Pro v1.2",
-                    description: "轻量级看图软件安装包 (exe, 10MB)",
-                    url: "#",
-                    usage: "轻量级的图片查看器，支持常见图片格式，具有快速预览和基本编辑功能。",
-                    installation: [
-                        "双击安装包运行安装程序",
-                        "选择安装目录",
-                        "选择是否创建桌面快捷方式",
-                        "完成安装",
-                        "首次运行时设置为默认图片查看器"
+                        "下载并解压zip文件",
+                        "运行Office_Tool.exe",
+                        "选择要安装的Office版本",
+                        "选择安装路径",
+                        "点击安装按钮",
+                        "等待安装完成"
                     ]
                 }
             ],
             "Mac": [
                 {
-                    name: "Homebrew",
-                    description: "macOS包管理器安装脚本 (sh, 2KB)",
-                    url: "#",
-                    usage: "Homebrew是macOS上的包管理器，可以轻松安装和管理各种开发工具和软件。",
+                    name: "Meslo LG M Regular字体",
+                    description: "Meslo LG M Regular for Powerline.ttf (ttf, 464.48KB)",
+                    url: "https://oxy-website.oss-cn-chengdu.aliyuncs.com/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E5%8C%85/Mac/Meslo%20LG%20M%20Regular%20for%20Powerline.ttf",
+                    usage: "Meslo LG M Regular字体是Powerline字体，可以用于终端显示。",
                     installation: [
-                        "打开终端应用程序",
+                        "下载并解压ttf文件",
                         "运行下载的安装脚本",
                         "按照提示输入管理员密码",
                         "等待安装完成",
@@ -120,12 +95,38 @@ let softwareData = {
                 },
                 {
                     name: "CleanMyMac X",
-                    description: "Mac系统清理工具 (dmg, 75MB)",
-                    url: "#",
+                    description: "CleanMyMac X 4.15.3 [MacKed].dmg (dmg, 118.773MB)",
+                    url: "https://oxy-website.oss-cn-chengdu.aliyuncs.com/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E5%8C%85/Mac/%E7%A0%B4%E8%A7%A3%E5%AE%89%E8%A3%85%E5%8C%85/CleanMyMac%20X%204.15.3%20%5BMacKed%5D.dmg",
                     usage: "专业的Mac系统清理和优化工具，可以清理垃圾文件、优化性能、管理启动项等。",
                     installation: [
                         "双击dmg文件挂载磁盘镜像",
                         "将CleanMyMac X拖拽到Applications文件夹",
+                        "在应用程序文件夹中启动软件",
+                        "输入许可证激活软件",
+                        "授予必要的系统权限"
+                    ]
+                },
+                {
+                    name:"Setapp",
+                    description:"Setapp 3.44.1 [MacKed].dmg (dmg, 103.085MB)",
+                    url:"https://oxy-website.oss-cn-chengdu.aliyuncs.com/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E5%8C%85/Mac/%E7%A0%B4%E8%A7%A3%E5%AE%89%E8%A3%85%E5%8C%85/Setapp%203.44.1%20%5BMacKed%5D.dmg",
+                    usage:"Setapp 是一款Mac上的软件管理工具，可以方便地管理Mac上的软件。",
+                    installation:[
+                        "双击dmg文件挂载磁盘镜像",
+                        "将Setapp拖拽到Applications文件夹",
+                        "在应用程序文件夹中启动软件",
+                        "输入许可证激活软件",
+                        "授予必要的系统权限"
+                    ]
+                },
+                {
+                    name:"macOS小助手", 
+                    description:"macOS小助手.dmg (dmg, 14.905MB)",
+                    url:"https://oxy-website.oss-cn-chengdu.aliyuncs.com/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E5%8C%85/Mac/%E7%A0%B4%E8%A7%A3%E5%AE%89%E8%A3%85%E5%8C%85/macOS%E5%B0%8F%E5%8A%A9%E6%89%8B.dmg",
+                    usage:"macOS小助手是一款Mac上的软件管理工具，可以方便地管理Mac上的软件。",
+                    installation:[
+                        "双击dmg文件挂载磁盘镜像",
+                        "将macOS小助手拖拽到Applications文件夹",
                         "在应用程序文件夹中启动软件",
                         "输入许可证激活软件",
                         "授予必要的系统权限"
