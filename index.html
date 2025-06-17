@@ -3,50 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的软件下载站</title>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; background-color: #f4f4f9; color: #333; }
-        .container { max-width: 800px; margin: 40px auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        h1 { color: #0056b3; text-align: center; }
-        ul { list-style: none; padding: 0; }
-        li { padding: 15px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
-        li:last-child { border-bottom: none; }
-        a.download-btn { display: inline-block; padding: 8px 15px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.2s; }
-        a.download-btn:hover { background-color: #0056b3; }
-        .file-info { flex-grow: 1; }
-        .file-name { font-size: 1.1em; }
-        .file-desc { font-size: 0.9em; color: #666; }
-    </style>
+    <meta name="description" content="专业的软件资源管理平台，提供编程工具和系统软件下载">
+    <meta name="keywords" content="软件下载,编程工具,开发环境,系统软件">
+    <meta name="author" content="ChinHae Software">
+    <title>🚀 软件仓库 | 专业软件资源管理平台</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💿</text></svg>">
+    
+    <!-- 预连接优化 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+    <!-- 管理按钮 -->
+    <button class="admin-toggle" onclick="toggleAdmin()">⚙️ 管理</button>
+
     <div class="container">
-        <h1>我的个人软件仓库</h1>
-        <ul>
-            <!-- 第一个软件 -->
-            <li>
-                <div class="file-info">
-                    <div class="file-name">macos</div>
-                    <div class="file-desc">JetBrains激活工具 (zip, 25MB)</div>
-                </div>
-                <!-- ！！！注意：把这里的 href="..." 替换成你自己的文件URL ！！！ -->
-                <a href="https://chinhae-software.oss-cn-chengdu.aliyuncs.com/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E5%8C%85/macos.zip" class="download-btn">下载</a>
-            </li>
+        <h1>🚀 软件仓库</h1>
+        
+        <!-- 管理面板 -->
+        <div class="admin-panel" id="adminPanel">
+            <h3>添加新软件</h3>
+            <div class="admin-form">
+                <select id="categorySelect">
+                    <option value="">选择分类</option>
+                </select>
+                <select id="platformSelect">
+                    <option value="">选择平台</option>
+                    <option value="Windows">Windows</option>
+                    <option value="Mac">Mac</option>
+                </select>
+                <input type="text" id="softwareName" placeholder="软件名称">
+                <input type="text" id="softwareDesc" placeholder="软件描述 (格式: 描述信息 (格式, 大小))">
+                <textarea id="softwareUsage" placeholder="软件介绍 (功能、用途等)" rows="3"></textarea>
+                <textarea id="installationSteps" placeholder="安装说明 (每行一个步骤，支持多行)" rows="4"></textarea>
+                <input type="url" id="downloadUrl" placeholder="下载链接">
+                <button onclick="addSoftware()">添加软件</button>
+            </div>
+            <h3>添加新分类</h3>
+            <div class="admin-form">
+                <input type="text" id="newCategoryName" placeholder="分类名称">
+                <input type="text" id="newCategoryIcon" placeholder="分类图标 (emoji)" value="📁">
+                <button onclick="addCategory()">添加分类</button>
+            </div>
+            <div style="display: flex; gap: 10px; margin-top: 15px;">
+                <button onclick="exportData()" style="background-color: #28a745; flex: 1;">导出数据</button>
+                <button onclick="importData()" style="background-color: #ffc107; color: #000; flex: 1;">导入数据</button>
+            </div>
+        </div>
+        
+        <!-- 搜索栏 -->
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-box" id="searchBox" placeholder="搜索软件...">
+            <div class="search-results" id="searchResults"></div>
+        </div>
 
-            <!-- 第二个软件 -->
-            <li>
-                <div class="file-info">
-                    <div class="file-name">看图软件 Pro v1.2</div>
-                    <div class="file-desc">轻量级看图软件安装包 (exe, 10MB)</div>
-                </div>
-                <!-- ！！！注意：把这里的 href="..." 替换成你自己的文件URL ！！！ -->
-                <a href="这里粘贴你的第二个软件的URL" class="download-btn">下载</a>
-            </li>
+        <!-- 面包屑导航 -->
+        <nav class="breadcrumb" id="breadcrumb">
+            <!-- 动态生成 -->
+        </nav>
 
-            <!-- 如果还有更多软件，就复制上面的 <li>...</li> 代码块继续添加 -->
-
-        </ul>
+        <!-- 内容区域 -->
+        <div class="content-grid" id="contentGrid">
+            <!-- 动态生成 -->
+        </div>
+        
+        <!-- 页脚 -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>🚀 软件仓库 - 专业软件资源管理平台</p>
+                <p class="footer-sub">Powered by ChinHae Software • 让软件管理更简单</p>
+            </div>
+        </footer>
     </div>
+
+    <!-- 软件详情模态框 -->
+    <div id="softwareModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">软件详情</h2>
+                <button class="modal-close" onclick="closeSoftwareModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- 动态生成内容 -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
 
 </body>
 </html>

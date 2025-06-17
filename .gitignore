@@ -1,0 +1,94 @@
+# 系统文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows 系统文件
+*.tmp
+*.swp
+*.swo
+*~
+
+# 编辑器和IDE配置文件
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.atom/
+.brackets.json
+.history/
+
+# 临时文件和缓存
+*.log
+*.cache
+.cache/
+temp/
+tmp/
+
+# Node.js 相关（如果将来需要添加构建工具）
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.yarn-integrity
+
+# 构建输出目录（如果将来需要）
+dist/
+build/
+out/
+
+# 环境配置文件
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# 备份文件
+*.bak
+*.backup
+*.old
+
+# 压缩包
+*.zip
+*.rar
+*.7z
+*.tar.gz
+
+# 可能的敏感文件
+config.local.js
+secrets.json
+
+# 测试覆盖率报告
+coverage/
+.nyc_output/
+
+# 操作系统生成的文件
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# JetBrains IDE
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# 其他可能的临时文件
+*.pid
+*.seed
+*.pid.lock 
