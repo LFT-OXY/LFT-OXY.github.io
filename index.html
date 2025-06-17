@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的软件下载站</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; background-color: #f4f4f9; color: #333; }
+        .container { max-width: 800px; margin: 40px auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h1 { color: #0056b3; text-align: center; }
+        ul { list-style: none; padding: 0; }
+        li { padding: 15px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+        li:last-child { border-bottom: none; }
+        a.download-btn { display: inline-block; padding: 8px 15px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background-color 0.2s; }
+        a.download-btn:hover { background-color: #0056b3; }
+        .file-info { flex-grow: 1; }
+        .file-name { font-size: 1.1em; }
+        .file-desc { font-size: 0.9em; color: #666; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>我的个人软件仓库</h1>
+        <ul>
+            <!-- 第一个软件 -->
+            <li>
+                <div class="file-info">
+                    <div class="file-name">macos</div>
+                    <div class="file-desc">JetBrains激活工具 (zip, 25MB)</div>
+                </div>
+                <!-- ！！！注意：把这里的 href="..." 替换成你自己的文件URL ！！！ -->
+                <a href="https://chinhae-software.oss-cn-chengdu.aliyuncs.com/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E5%8C%85/macos.zip" class="download-btn">下载</a>
+            </li>
+
+            <!-- 第二个软件 -->
+            <li>
+                <div class="file-info">
+                    <div class="file-name">看图软件 Pro v1.2</div>
+                    <div class="file-desc">轻量级看图软件安装包 (exe, 10MB)</div>
+                </div>
+                <!-- ！！！注意：把这里的 href="..." 替换成你自己的文件URL ！！！ -->
+                <a href="这里粘贴你的第二个软件的URL" class="download-btn">下载</a>
+            </li>
+
+            <!-- 如果还有更多软件，就复制上面的 <li>...</li> 代码块继续添加 -->
+
+        </ul>
+    </div>
+
+</body>
+</html>
