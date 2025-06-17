@@ -77,6 +77,18 @@ let softwareData = {
                         "点击安装按钮",
                         "等待安装完成"
                     ]
+                },
+                {
+                    name: "微PE工具箱",
+                    description: "WePE_64_V2.3.exe (exe, 227.538MB)",
+                    url: "https://oxy-website.oss-cn-chengdu.aliyuncs.com/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E5%8C%85/Windows/WePE_64_V2.3.exe",
+                    usage: "微PE工具箱是一款Windows系统安装工具，支持一键安装系统、备份还原、分区管理等功能。",
+                    installation: [
+                        "双击运行exe文件",
+                        "安装在本地，无需选择直接安装",
+                        "安装在u盘，就选择u盘目录，然后点击安装",
+                        "等待安装完成"
+                    ]
                 }
             ],
             "Mac": [
@@ -349,7 +361,48 @@ function hideSearchResults() {
 // 管理功能
 function toggleAdmin() {
     const panel = document.getElementById('adminPanel');
-    panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+    const toggleBtn = document.querySelector('.admin-toggle-modern');
+    
+    if (panel.style.display === 'none' || panel.style.display === '') {
+        panel.style.display = 'block';
+        toggleBtn.classList.add('active');
+        // 滚动到管理面板
+        panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+        panel.style.display = 'none';
+        toggleBtn.classList.remove('active');
+    }
+}
+
+// 切换管理标签页
+function switchAdminTab(tabName) {
+    // 移除所有标签的活动状态
+    document.querySelectorAll('.admin-tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    
+    // 隐藏所有内容区域
+    document.querySelectorAll('.admin-section').forEach(section => {
+        section.classList.add('hidden');
+    });
+    
+    // 激活选中的标签
+    const activeTab = document.querySelector(`[onclick="switchAdminTab('${tabName}')"]`);
+    if (activeTab) {
+        activeTab.classList.add('active');
+    }
+    
+    // 显示对应的内容区域
+    const sectionMap = {
+        'software': 'softwareSection',
+        'category': 'categorySection',
+        'data': 'dataSection'
+    };
+    
+    const targetSection = document.getElementById(sectionMap[tabName]);
+    if (targetSection) {
+        targetSection.classList.remove('hidden');
+    }
 }
 
 function updateCategorySelect() {

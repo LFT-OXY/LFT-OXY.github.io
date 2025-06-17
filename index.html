@@ -22,48 +22,131 @@
 </head>
 <body>
 
-    <!-- 管理按钮 -->
-    <button class="admin-toggle" onclick="toggleAdmin()">⚙️ 管理</button>
-
     <div class="container">
         <h1>🚀 软件仓库</h1>
         
-        <!-- 管理面板 -->
-        <div class="admin-panel" id="adminPanel">
-            <h3>添加新软件</h3>
-            <div class="admin-form">
-                <select id="categorySelect">
-                    <option value="">选择分类</option>
-                </select>
-                <select id="platformSelect">
-                    <option value="">选择平台</option>
-                    <option value="Windows">Windows</option>
-                    <option value="Mac">Mac</option>
-                </select>
-                <input type="text" id="softwareName" placeholder="软件名称">
-                <input type="text" id="softwareDesc" placeholder="软件描述 (格式: 描述信息 (格式, 大小))">
-                <textarea id="softwareUsage" placeholder="软件介绍 (功能、用途等)" rows="3"></textarea>
-                <textarea id="installationSteps" placeholder="安装说明 (每行一个步骤，支持多行)" rows="4"></textarea>
-                <input type="url" id="downloadUrl" placeholder="下载链接">
-                <button onclick="addSoftware()">添加软件</button>
-            </div>
-            <h3>添加新分类</h3>
-            <div class="admin-form">
-                <input type="text" id="newCategoryName" placeholder="分类名称">
-                <input type="text" id="newCategoryIcon" placeholder="分类图标 (emoji)" value="📁">
-                <button onclick="addCategory()">添加分类</button>
-            </div>
-            <div style="display: flex; gap: 10px; margin-top: 15px;">
-                <button onclick="exportData()" style="background-color: #28a745; flex: 1;">导出数据</button>
-                <button onclick="importData()" style="background-color: #ffc107; color: #000; flex: 1;">导入数据</button>
-            </div>
-        </div>
-        
-        <!-- 搜索栏 -->
+        <!-- 搜索栏和管理按钮区域 -->
         <div class="search-container">
             <span class="search-icon">🔍</span>
             <input type="text" class="search-box" id="searchBox" placeholder="搜索软件...">
+            <div class="admin-controls">
+                <button class="admin-toggle-modern" onclick="toggleAdmin()" title="管理模式">
+                    <span class="admin-icon">⚙️</span>
+                    <span class="admin-text">管理</span>
+                    <div class="admin-indicator"></div>
+                </button>
+            </div>
             <div class="search-results" id="searchResults"></div>
+        </div>
+        
+        <!-- 管理面板 -->
+        <div class="admin-panel-modern" id="adminPanel">
+            <div class="admin-header">
+                <div class="admin-title">
+                    <span class="admin-title-icon">🔧</span>
+                    <h3>软件管理中心</h3>
+                </div>
+                <button class="admin-close-btn" onclick="toggleAdmin()">
+                    <span>✕</span>
+                </button>
+            </div>
+            
+            <div class="admin-tabs">
+                <button class="admin-tab active" onclick="switchAdminTab('software')">
+                    <span>📦</span>
+                    添加软件
+                </button>
+                <button class="admin-tab" onclick="switchAdminTab('category')">
+                    <span>📁</span>
+                    添加分类
+                </button>
+                <button class="admin-tab" onclick="switchAdminTab('data')">
+                    <span>💾</span>
+                    数据管理
+                </button>
+            </div>
+            
+            <div class="admin-content">
+                <!-- 添加软件面板 -->
+                <div class="admin-section" id="softwareSection">
+                    <div class="admin-form-grid">
+                        <div class="form-group">
+                            <label>分类</label>
+                            <select id="categorySelect">
+                                <option value="">选择分类</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>平台</label>
+                            <select id="platformSelect">
+                                <option value="">选择平台</option>
+                                <option value="Windows">Windows</option>
+                                <option value="Mac">Mac</option>
+                            </select>
+                        </div>
+                        <div class="form-group span-2">
+                            <label>软件名称</label>
+                            <input type="text" id="softwareName" placeholder="请输入软件名称">
+                        </div>
+                        <div class="form-group span-2">
+                            <label>软件描述</label>
+                            <input type="text" id="softwareDesc" placeholder="格式: 描述信息 (格式, 大小)">
+                        </div>
+                        <div class="form-group span-2">
+                            <label>软件介绍</label>
+                            <textarea id="softwareUsage" placeholder="功能、用途等详细介绍" rows="3"></textarea>
+                        </div>
+                        <div class="form-group span-2">
+                            <label>安装说明</label>
+                            <textarea id="installationSteps" placeholder="每行一个步骤，支持多行" rows="4"></textarea>
+                        </div>
+                        <div class="form-group span-2">
+                            <label>下载链接</label>
+                            <input type="url" id="downloadUrl" placeholder="https://example.com/download">
+                        </div>
+                        <div class="form-group span-2">
+                            <button class="btn-primary" onclick="addSoftware()">
+                                <span>✨</span>
+                                添加软件
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 添加分类面板 -->
+                <div class="admin-section hidden" id="categorySection">
+                    <div class="admin-form-grid">
+                        <div class="form-group">
+                            <label>分类名称</label>
+                            <input type="text" id="newCategoryName" placeholder="请输入分类名称">
+                        </div>
+                        <div class="form-group">
+                            <label>分类图标</label>
+                            <input type="text" id="newCategoryIcon" placeholder="emoji图标" value="📁">
+                        </div>
+                        <div class="form-group span-2">
+                            <button class="btn-primary" onclick="addCategory()">
+                                <span>🆕</span>
+                                添加分类
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 数据管理面板 -->
+                <div class="admin-section hidden" id="dataSection">
+                    <div class="data-actions">
+                        <button class="btn-success" onclick="exportData()">
+                            <span>📤</span>
+                            导出数据
+                        </button>
+                        <button class="btn-warning" onclick="importData()">
+                            <span>📥</span>
+                            导入数据
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- 面包屑导航 -->
