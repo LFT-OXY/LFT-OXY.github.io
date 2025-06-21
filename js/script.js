@@ -146,6 +146,102 @@ let softwareData = {
                 }
             ]
         }
+    },
+    "系统": {
+        icon: "🖥️",
+        platforms: {
+            "Windows": [
+                {
+                    name: "Windows 11 专业版",
+                    description: "Win11_23H2_Chinese(Simplified)_x64.iso (iso, 5.7GB)",
+                    url: "#",
+                    usage: "Windows 11 专业版操作系统，提供现代化的用户界面和增强的安全性功能。",
+                    installation: [
+                        "制作启动U盘或DVD光盘",
+                        "设置BIOS从U盘或光盘启动",
+                        "按照安装向导进行操作",
+                        "选择安装类型和分区",
+                        "输入产品密钥并激活系统",
+                        "完成初始设置和用户配置"
+                    ]
+                },
+                {
+                    name: "Windows 10 22H2 CHINHAE",
+                    description: "Windows 10 22H2 CHINHAE (wim, 5.23GB)",
+                    url: "https://oxy-website.oss-cn-chengdu.aliyuncs.com/%E7%B3%BB%E7%BB%9F/Windows/Windows%2010%2022H2%20CHINHAE.wim",
+                    usage: "Windows 10 22H2 CHINHAE 操作系统",
+                    installation: [
+                        "准备安装媒体（U盘或DVD）",
+                        "从安装媒体启动计算机",
+                        "选择语言、时间和键盘设置",
+                        "点击现在安装开始安装",
+                        "输入产品密钥",
+                        "按照提示完成安装过程"
+                    ]
+                },
+                {
+                    name: "Windows 10 企业版",
+                    description: "Win10_21H2_Enterprise_x64.iso (iso, 4.9GB)",
+                    url: "#",
+                    usage: "Windows 10 企业版操作系统，适合企业环境使用，提供高级管理和安全功能。",
+                    installation: [
+                        "准备安装媒体（U盘或DVD）",
+                        "从安装媒体启动计算机",
+                        "选择语言、时间和键盘设置",
+                        "点击现在安装开始安装",
+                        "输入产品密钥",
+                        "按照提示完成安装过程"
+                    ]
+                }
+            ],
+            "Linux": [
+                {
+                    name: "Ubuntu Desktop 22.04 LTS",
+                    description: "ubuntu-22.04.3-desktop-amd64.iso (iso, 4.6GB)",
+                    url: "#",
+                    usage: "Ubuntu是最受欢迎的Linux发行版之一，适合桌面和服务器使用，拥有丰富的软件生态。",
+                    installation: [
+                        "下载ISO镜像文件",
+                        "制作启动U盘",
+                        "从U盘启动计算机",
+                        "选择试用或安装Ubuntu",
+                        "按照安装向导配置系统",
+                        "创建用户账户并设置密码",
+                        "重启系统完成安装"
+                    ]
+                },
+                {
+                    name: "CentOS Stream 9",
+                    description: "CentOS-Stream-9-x86_64-dvd1.iso (iso, 9.3GB)",
+                    url: "#",
+                    usage: "CentOS Stream是企业级Linux发行版，基于Red Hat Enterprise Linux，适合服务器部署。",
+                    installation: [
+                        "下载CentOS Stream ISO文件",
+                        "创建安装介质",
+                        "配置服务器从安装介质启动",
+                        "选择安装类型和软件包",
+                        "配置网络和安全设置",
+                        "设置root密码和用户账户",
+                        "完成安装并重启系统"
+                    ]
+                },
+                {
+                    name: "Debian 12 (Bookworm)",
+                    description: "debian-12.2.0-amd64-DVD-1.iso (iso, 3.9GB)",
+                    url: "#",
+                    usage: "Debian是稳定可靠的Linux发行版，以其严格的软件质量控制和长期支持而闻名。",
+                    installation: [
+                        "获取Debian ISO镜像",
+                        "制作启动盘",
+                        "启动安装程序",
+                        "选择安装语言和地区",
+                        "配置磁盘分区",
+                        "设置用户和密码",
+                        "选择软件包并完成安装"
+                    ]
+                }
+            ]
+        }
     }
 };
 
@@ -244,7 +340,14 @@ function displayPlatforms(categoryName) {
     
     let html = '';
     Object.entries(categoryData.platforms).forEach(([platformName, softwares]) => {
-        const platformIcon = platformName === 'Windows' ? '💻' : '🍎';
+        let platformIcon = '💻';
+        if (platformName === 'Windows') {
+            platformIcon = '💻';
+        } else if (platformName === 'Mac') {
+            platformIcon = '🍎';
+        } else if (platformName === 'Linux') {
+            platformIcon = '🐧';
+        }
         html += `
             <div class="item-card folder-card" onclick="navigateTo(['${categoryName}', '${platformName}'])">
                 <span class="item-icon">${platformIcon}</span>
