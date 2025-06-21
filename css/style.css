@@ -843,6 +843,19 @@ h1 {
     background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
 }
 
+.folder-info {
+    background: linear-gradient(135deg, rgba(72, 187, 120, 0.08) 0%, rgba(56, 161, 105, 0.08) 100%);
+    border-radius: 12px;
+    padding: 20px;
+    border-left: 4px solid #48bb78;
+    margin-top: 15px;
+}
+
+.folder-info p {
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
 .software-name-clickable {
     cursor: pointer;
     transition: all 0.3s ease;

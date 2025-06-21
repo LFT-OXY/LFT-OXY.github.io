@@ -65,7 +65,7 @@ let softwareData = {
         platforms: {
             "Windows": [
                 {
-                    name: "Office",
+                    name: "Office工具箱",
                     description: "Office_Tool_with_runtime_v10.21.35.0_x64.zip (zip, 73.531MB)",
                     url: "https://oxy-website.oss-cn-chengdu.aliyuncs.com/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E5%8C%85/Windows/Office_Tool_with_runtime_v10.21.35.0_x64.zip",
                     usage: "Office Tool Plus 是微软官方的 Office 安装工具，支持批量部署、版本切换、激活等操作。",
@@ -240,6 +240,67 @@ let softwareData = {
                         "选择软件包并完成安装"
                     ]
                 }
+            ],
+            "工具": [
+                {
+                    name: "电脑游戏优化.7z",
+                    description: "游戏性能优化工具合集 (7z, 128MB)",
+                    url: "https://oxy-website.oss-cn-chengdu.aliyuncs.com/%E7%B3%BB%E7%BB%9F/%E5%B7%A5%E5%85%B7/%E7%94%B5%E8%84%91%E6%B8%B8%E6%88%8F%E4%BC%98%E5%8C%96.7z",
+                    usage: "专业的游戏性能优化工具合集，包含显卡驱动优化、系统清理、内存释放、游戏加速等功能，全面提升游戏运行性能和流畅度。",
+                    installation: [
+                        "使用7-Zip或WinRAR解压文件",
+                        "运行其中的主程序",
+                        "选择需要优化的游戏",
+                        "点击一键优化按钮",
+                        "重启电脑以应用优化设置",
+                        "启动游戏享受流畅体验"
+                    ]
+                }
+            ],
+            "win10调试包": [
+                {
+                    name: "Windows系统关闭更新工具",
+                    description: "关闭更新.bat(bat, 7.01KB)",
+                    url: "https://oxy-website.oss-cn-chengdu.aliyuncs.com/%E7%B3%BB%E7%BB%9F/%E5%B7%A5%E5%85%B7/Windows%E7%B3%BB%E7%BB%9F%E5%85%A8%E9%9D%A2%E8%AF%8A%E6%96%AD%E5%B7%A5%E5%85%B7.bat",
+                    usage: "关闭Windows更新，防止系统自动更新。",
+                    installation: [
+                        "双击运行关闭更新.bat",
+                        "等待关闭更新完成"
+                    ]
+                },
+                {
+                    name: "360驱动大师",
+                    description: "360驱动大师.exe (exe, 8.58MB)",
+                    url: "https://oxy-website.oss-cn-chengdu.aliyuncs.com/%E7%B3%BB%E7%BB%9F/%E5%B7%A5%E5%85%B7/win10%E8%B0%83%E8%AF%95%E5%8C%85/360%E9%A9%B1%E5%8A%A8%E5%A4%A7%E5%B8%88.exe",
+                    usage: "360驱动大师是一款驱动管理工具，可以自动检测和安装硬件驱动程序。",
+                    installation: [
+                        "双击运行360驱动大师.exe",
+                        "点击立即体验按钮",
+                        "等待驱动安装完成"
+                    ]
+                },
+                {
+                    name: "驱动人生",
+                    description: "驱动人生版单文件.exe (exe, 10.72MB)",
+                    url: "https://oxy-website.oss-cn-chengdu.aliyuncs.com/%E7%B3%BB%E7%BB%9F/%E5%B7%A5%E5%85%B7/win10%E8%B0%83%E8%AF%95%E5%8C%85/驱动人生.exe",
+                    usage: "驱动人生是一款驱动管理工具，可以自动检测和安装硬件驱动程序。",
+                    installation: [
+                        "双击运行驱动人生.exe",
+                        "点击立即体验按钮",
+                        "等待驱动安装完成"
+                    ]
+                },
+                {
+                    name: "驱动精灵",
+                    description: "驱动精灵_v9.61.419.1421_去广告纯净版单文件.exe(exe, 10.99MB)",
+                    url: "https://oxy-website.oss-cn-chengdu.aliyuncs.com/%E7%B3%BB%E7%BB%9F/%E5%B7%A5%E5%85%B7/win10%E8%B0%83%E8%AF%95%E5%8C%85/%E9%A9%B1%E5%8A%A8%E7%B2%BE%E7%81%B5_v9.61.419.1421_%E5%8E%BB%E5%B9%BF%E5%91%8A%E7%BA%AF%E5%87%80%E7%89%88%E5%8D%95%E6%96%87%E4%BB%B6.exe",
+                    usage: "驱动精灵是一款驱动管理工具，可以自动检测和安装硬件驱动程序。",
+                    installation: [
+                        "双击运行驱动精灵.exe",
+                        "点击立即体验按钮",
+                        "等待驱动安装完成"
+                    ]
+                }
             ]
         }
     }
@@ -347,6 +408,10 @@ function displayPlatforms(categoryName) {
             platformIcon = '🍎';
         } else if (platformName === 'Linux') {
             platformIcon = '🐧';
+        } else if (platformName === '工具') {
+            platformIcon = '🔧';
+        } else if (platformName === 'win10调试包') {
+            platformIcon = '🛠️';
         }
         html += `
             <div class="item-card folder-card" onclick="navigateTo(['${categoryName}', '${platformName}'])">
@@ -377,9 +442,15 @@ function displaySoftware(categoryName, platformName) {
     
     let html = '';
     softwares.forEach((software, index) => {
+        // 根据类型选择图标
+        let itemIcon = '💿'; // 默认为光盘图标
+        if (software.type === 'folder') {
+            itemIcon = '📁'; // 文件夹图标
+        }
+        
         html += `
             <div class="item-card software-card">
-                <span class="item-icon">💿</span>
+                <span class="item-icon">${itemIcon}</span>
                 <div class="item-name software-name-clickable" onclick="openSoftwareModal('${categoryName}', '${platformName}', ${index})">${software.name}</div>
                 <div class="item-desc">${software.description}</div>
             </div>
@@ -652,22 +723,50 @@ function openSoftwareModal(categoryName, platformName, softwareIndex) {
     
     modalTitle.textContent = software.name;
     
+    // 根据类型选择图标和下载区域内容
+    let modalIcon = '💿'; // 默认图标
+    let downloadSection = '';
+    
+    if (software.type === 'folder') {
+        modalIcon = '📁';
+        downloadSection = `
+            <div class="download-section">
+                <h4>📁 文件夹说明</h4>
+                <div class="folder-info">
+                    <p>这是一个工具文件夹，包含多个实用工具和脚本文件。</p>
+                    <p style="color: #718096; font-size: 14px;">
+                        💡 提示：此项目为文件夹形式，通常需要从系统安装盘或其他渠道获取。
+                    </p>
+                </div>
+            </div>
+        `;
+    } else {
+        downloadSection = `
+            <div class="download-section">
+                <h4>📥 下载软件</h4>
+                <a href="${software.url}" class="download-btn-large" ${software.url === '#' ? 'onclick="alert(\'下载链接暂未配置\'); return false;"' : ''}>
+                    立即下载 ${software.name}
+                </a>
+            </div>
+        `;
+    }
+    
     modalBody.innerHTML = `
-        <div class="software-icon-large">💿</div>
+        <div class="software-icon-large">${modalIcon}</div>
         
         <div class="software-info">
-            <div><strong>软件描述：</strong>${software.description}</div>
+            <div><strong>${software.type === 'folder' ? '文件夹描述：' : '软件描述：'}</strong>${software.description}</div>
         </div>
         
         <div class="info-section">
-            <h3>📋 软件介绍</h3>
+            <h3>📋 ${software.type === 'folder' ? '功能介绍' : '软件介绍'}</h3>
             <div class="info-content">
                 ${software.usage || '暂无使用说明'}
             </div>
         </div>
         
         <div class="info-section">
-            <h3>⚙️ 安装说明</h3>
+            <h3>⚙️ ${software.type === 'folder' ? '使用说明' : '安装说明'}</h3>
             <div class="info-content">
                 ${software.installation ? 
                     '<ul>' + software.installation.map(step => `<li>${step}</li>`).join('') + '</ul>' 
@@ -676,12 +775,7 @@ function openSoftwareModal(categoryName, platformName, softwareIndex) {
             </div>
         </div>
         
-        <div class="download-section">
-            <h4>📥 下载软件</h4>
-            <a href="${software.url}" class="download-btn-large" ${software.url === '#' ? 'onclick="alert(\'下载链接暂未配置\'); return false;"' : ''}>
-                立即下载 ${software.name}
-            </a>
-        </div>
+        ${downloadSection}
     `;
     
     modal.style.display = 'block';
