@@ -255,6 +255,17 @@ let softwareData = {
                         "重启电脑以应用优化设置",
                         "启动游戏享受流畅体验"
                     ]
+                },
+                {
+                    name: "DirectX修复",
+                    description: "DirectX修复V3.41.1.exe(exe, 1.96MB)",
+                    url: "https://oxy-website.oss-cn-chengdu.aliyuncs.com/%E7%B3%BB%E7%BB%9F/%E5%B7%A5%E5%85%B7/DirectX%E4%BF%AE%E5%A4%8DV3.41.1.exe",
+                    usage: "DirectX修复工具是一款用于修复DirectX错误的工具，可以修复DirectX错误，提高游戏性能。",
+                    installation: [
+                        "双击运行DirectX修复V3.41.1.exe",
+                        "点击一键修复按钮",
+                        "重启电脑以应用修复设置"
+                    ]
                 }
             ],
             "win10调试包": [
